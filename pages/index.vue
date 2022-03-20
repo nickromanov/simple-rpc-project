@@ -17,10 +17,9 @@
 <script lang="ts">
   import InputText from 'primevue/inputtext';
   import { Component, Prop, Vue } from 'nuxt-property-decorator'
-  import { filterByAuthor, getListWithAuthors } from '../utils/api';
-  import { TPostDataWithAuthorList } from '../types/interfaces';
-  // @ts-ignore
-  import PostsList from '../components/PostsList';
+  import { filterByAuthor, getListWithAuthors } from '@/utils/api';
+  import { TPostDataWithAuthorList } from '@/types/interfaces';
+  import PostsList from '@/components/PostsList.vue';
 
   @Component({
     components: {
@@ -33,11 +32,19 @@
     private postsList: TPostDataWithAuthorList = [];
     private nativeList: TPostDataWithAuthorList = [];
 
+    /**
+     * Data loading hook
+     * @param value
+     */
     async fetch(): Promise<void> {
       this.nativeList = await getListWithAuthors(this.$axios);
       this.postsList  = [...this.nativeList];
     }
 
+    /**
+     * Input change handler, start searching by author
+     * @param value
+     */
     searchByAuthor(value: string): void {
       if(value.length === 0) {
         this.postsList  = [...this.nativeList];
