@@ -72,14 +72,24 @@
   .srp-Index__search-wrapper {
     width: 25%;
   }
-
+  @media (min-width: 1024px)  {
+    .srp-Index__body {
+      padding: 0 20px 0 32px;
+    }
+  }
   @media (min-width: 768px) and (max-width: 1024px)  {
+    .srp-Index__body {
+      padding: 0 0 0 12px;
+    }
     .srp-Index__search-wrapper {
       width: 35%;
     }
   }
 
   @media (max-width: 768px)  {
+    .srp-Index__body {
+      padding: 0;
+    }
     .srp-Index__search-wrapper {
       width: 50%;
     }
@@ -97,6 +107,5 @@
 
   .srp-Index__body {
     width: 100%;
-    padding: 0 1rem 0.75rem 2rem;
   }
 </style>
