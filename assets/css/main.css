@@ -1,3 +1,23 @@
 body {
+  margin: 0;
   background: aliceblue;
+  padding: var(--body-padding);
+  font-family: var(--font-family);
+}
+
+:root {
+  --body-padding: 1rem 2rem 0.75rem 2rem;
+
+  --text-accented: var(--blue-300);
+  --white: #fff;
+  --lightgray: #ced4da;
+  --darkgray: var(--bluegray-500);
+
+  --font-size-xl: 1.25rem;
+  --font-size-l: 1rem;
+  --font-size-m: 0.75rem;
+  --font-size-s: 0.5rem;
+
+  --margin-m: 2rem;
+  --margin-s: 1rem;
 }
