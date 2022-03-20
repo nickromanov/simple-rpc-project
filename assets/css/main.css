@@ -2,19 +2,8 @@ body {
   margin: 0;
   background: var(--background);
   font-family: var(--font-family);
-  /*padding: 0 2rem 0.75rem 2rem;*/
+  overflow-x: hidden;
 }
-/*@media (min-width: 768px) and (max-width: 1024px)  {*/
-/*  body {*/
-/*    padding: 0 1rem 0.75rem 1rem;*/
-/*  }*/
-/*}*/
-
-/*@media (max-width: 768px)  {*/
-/*  body {*/
-/*    padding: 0 0 0 1rem;*/
-/*  }*/
-/*}*/
 
 :root {
   --background: aliceblue;

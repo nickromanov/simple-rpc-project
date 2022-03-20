@@ -8,50 +8,45 @@
     </div>
 
     <div class="srp-Index__body">
-      <PostsList :list="postsList" v-if="postsList"/>
+      <PostsList :list="postsList" v-if="postsList.length"/>
     </div>
   </div>
 
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
   import InputText from 'primevue/inputtext';
-  import PostsList from '~/components/PostsList.vue';
-  import { filterByAuthor, getListWithAuthors } from '~/utils/api';
+  import { Component, Prop, Vue } from 'nuxt-property-decorator'
+  import { filterByAuthor, getListWithAuthors } from '../utils/api';
+  import { TPostDataWithAuthorList } from '../types/interfaces';
+  // @ts-ignore
+  import PostsList from '../components/PostsList';
 
-  export default Vue.extend({
-    name: 'my-reports',
-    data() {
-      return {
-        searchQuery: '',
-        postsList: undefined
-      };
-    },
-
-    async fetch() {
-      let data = await getListWithAuthors(this.$axios);
-      this.postsList  = this.nativeList = data;
-
-    },
-
-    methods: {
-      searchByAuthor(value: string): void {
-        debugger
-        if(value.length === 0) {
-          this.postsList = [...this.nativeList];
-        }
-        if(value.length >= 3) {
-          this.postsList = filterByAuthor(value, this.postsList);
-        }
-
-      }
-    },
+  @Component({
     components: {
-      PostsList,
-      InputText
+      InputText,
+      PostsList
     }
-  });
+  })
+  export default class Index extends Vue {
+    private searchQuery: string = '';
+    private postsList: TPostDataWithAuthorList = [];
+    private nativeList: TPostDataWithAuthorList = [];
+
+    async fetch(): Promise<void> {
+      this.nativeList = await getListWithAuthors(this.$axios);
+      this.postsList  = [...this.nativeList];
+    }
+
+    searchByAuthor(value: string): void {
+      if(value.length === 0) {
+        this.postsList  = [...this.nativeList];
+      }
+      if(value.length >= 3) {
+        this.postsList  = filterByAuthor(value, this.postsList);
+      }
+    }
+  };
 </script>
 <style lang="scss" scoped>
 
@@ -69,12 +64,12 @@
   }
 
   .srp-Index__search-wrapper {
-    width: 20%;
+    width: 25%;
   }
 
   @media (min-width: 768px) and (max-width: 1024px)  {
     .srp-Index__search-wrapper {
-      width: 30%;
+      width: 35%;
     }
   }
 
