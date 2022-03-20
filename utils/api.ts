@@ -1,6 +1,6 @@
 import { IAuthorData, IPostData, TPostDataList, IPostDataWithAuthor, TAuthorDataList, TPostDataWithAuthorList } from '~/types/interfaces';
 
-const API_LINK = 'http://jsonplaceholder.typicode.com';
+const API_LINK = 'https://jsonplaceholder.typicode.com';
 
 async function postData($http : any): Promise<TPostDataList> {
   return $http.$get(`${API_LINK}/posts`);
