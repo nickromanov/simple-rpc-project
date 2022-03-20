@@ -1,6 +1,6 @@
 <template>
   <div class="srp-PostList">
-    <template v-if="list.length">
+    <template v-if="list.length > 0">
       <div class="srp-PostList__postWrapper" v-for="post in list" v-bind:key="post.id">
         <Post :header="post.title" :body="post.body" :footer="post.authorName"/>
       </div>

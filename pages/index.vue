@@ -8,7 +8,7 @@
     </div>
 
     <div class="srp-Index__body">
-      <PostsList :list="postsList" v-if="postsList.length"/>
+      <PostsList v-if="!$fetchState.pending" :list="postsList" />
     </div>
   </div>
 
@@ -49,7 +49,7 @@
         this.postsList  = [...this.nativeList];
       }
       if(value.length >= 3) {
-        this.postsList  = filterByAuthor(value, this.postsList);
+        this.postsList  = filterByAuthor(value, this.nativeList);
       }
     }
   };
