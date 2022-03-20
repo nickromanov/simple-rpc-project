@@ -1,23 +1,48 @@
 body {
   margin: 0;
-  background: aliceblue;
-  padding: var(--body-padding);
+  background: var(--background);
   font-family: var(--font-family);
+  /*padding: 0 2rem 0.75rem 2rem;*/
 }
+/*@media (min-width: 768px) and (max-width: 1024px)  {*/
+/*  body {*/
+/*    padding: 0 1rem 0.75rem 1rem;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 768px)  {*/
+/*  body {*/
+/*    padding: 0 0 0 1rem;*/
+/*  }*/
+/*}*/
 
 :root {
-  --body-padding: 1rem 2rem 0.75rem 2rem;
-
+  --background: aliceblue;
   --text-accented: var(--blue-300);
   --white: #fff;
   --lightgray: #ced4da;
   --darkgray: var(--bluegray-500);
+  --lightblack: var(--surface-700);
 
   --font-size-xl: 1.25rem;
   --font-size-l: 1rem;
   --font-size-m: 0.75rem;
   --font-size-s: 0.5rem;
 
-  --margin-m: 2rem;
-  --margin-s: 1rem;
+  --offset-m: 2rem;
+  --offset-s: 1rem;
+  --offset-xs: 0.5rem;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(85, 85, 85, 0.7);
+  border-radius: 20px;
 }

@@ -3,12 +3,12 @@
     <div class="srp-Index__header">
         <span class="p-input-icon-left srp-Index__search-wrapper">
       <i class="pi pi-search"/>
-      <InputText class="srp-Search" type="text" placeholder="Filter by author..."/>
+      <InputText class="srp-Search" type="text" placeholder="Filter by author..." @input="searchByAuthor" v-model="searchQuery"/>
     </span>
     </div>
 
     <div class="srp-Index__body">
-      <PostsList :list="postsList"/>
+      <PostsList :list="postsList" v-if="postsList"/>
     </div>
   </div>
 
@@ -17,23 +17,36 @@
 <script lang="ts">
   import Vue from 'vue'
   import InputText from 'primevue/inputtext';
-
-  import { getListWithAuthors } from '~/loaders/api';
   import PostsList from '~/components/PostsList.vue';
+  import { filterByAuthor, getListWithAuthors } from '~/utils/api';
 
   export default Vue.extend({
     name: 'my-reports',
     data() {
       return {
-        postsList: []
+        searchQuery: '',
+        postsList: undefined
       };
     },
 
     async fetch() {
       let data = await getListWithAuthors(this.$axios);
-      this.postsList = data;
+      this.postsList  = this.nativeList = data;
+
     },
 
+    methods: {
+      searchByAuthor(value: string): void {
+        debugger
+        if(value.length === 0) {
+          this.postsList = [...this.nativeList];
+        }
+        if(value.length >= 3) {
+          this.postsList = filterByAuthor(value, this.postsList);
+        }
+
+      }
+    },
     components: {
       PostsList,
       InputText
@@ -45,9 +58,14 @@
   .srp-Search {
     width: 100%;
   }
+
   .srp-Index {
     display: flex;
     flex-direction: column;
+  }
+
+  .srp-Index__search-wrapper {
+    min-width: 200px;
   }
 
   .srp-Index__search-wrapper {
@@ -68,14 +86,16 @@
 
   .srp-Index__header {
     position: sticky;
-    top: 1rem;
-    width: 100%;
+    top: 0;
+    width: 100vw;
     display: flex;
     justify-content: center;
+    padding: var(--offset-s) 0;
+    background: var(--background);
   }
 
   .srp-Index__body {
     width: 100%;
-    margin-top: var(--margin-m);
+    padding: 0 1rem 0.75rem 2rem;
   }
 </style>
