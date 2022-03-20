@@ -15,11 +15,13 @@
   import { Component, Vue, Prop } from 'nuxt-property-decorator'
   import { TPostDataWithAuthorList } from '@/types/interfaces';
   import Post from './Post.vue';
+
   @Component({
     components: {
       Post
     }
   })
+
   export default class PostsList extends Vue {
     @Prop() private list!: TPostDataWithAuthorList;
   }

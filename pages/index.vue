@@ -16,7 +16,7 @@
 
 <script lang="ts">
   import InputText from 'primevue/inputtext';
-  import { Component, Prop, Vue } from 'nuxt-property-decorator'
+  import { Component, Vue } from 'nuxt-property-decorator'
   import { filterByAuthor, getListWithAuthors } from '@/utils/api';
   import { TPostDataWithAuthorList } from '@/types/interfaces';
   import PostsList from '@/components/PostsList.vue';
@@ -34,7 +34,6 @@
 
     /**
      * Data loading hook
-     * @param value
      */
     async fetch(): Promise<void> {
       this.nativeList = await getListWithAuthors(this.$axios);
