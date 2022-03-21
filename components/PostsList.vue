@@ -47,6 +47,12 @@
     max-width: calc(33.3% - (2 * var(--offset-xs)));
   }
 
+  .srp-PostList__empty {
+    font-size: 8rem;
+    margin: auto;
+    color: var(--lightblack);
+  }
+
   @media (min-width: 1024px) and (max-width: 1240px) {
     .srp-PostList__postWrapper {
       @include tablet;
@@ -66,9 +72,4 @@
     }
   }
 
-  .srp-PostList__empty {
-    font-size: 8rem;
-    margin: auto;
-    color: var(--lightblack);
-  }
 </style>

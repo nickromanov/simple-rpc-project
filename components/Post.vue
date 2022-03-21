@@ -9,9 +9,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
-@Component({
-})
-export default class Post extends Vue {
+@Component export default class Post extends Vue {
   @Prop() header!: string;
   @Prop() body!: string;
   @Prop() footer!: string;

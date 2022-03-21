@@ -56,8 +56,19 @@
 </script>
 <style lang="scss" scoped>
 
-  .srp-Search {
+  .srp-Search,
+  .srp-Index__body {
     width: 100%;
+  }
+
+  .srp-Index__header {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding: var(--offset-s) 0;
+    background: var(--background);
   }
 
   .srp-Index {
@@ -72,6 +83,7 @@
   .srp-Index__search-wrapper {
     width: 25%;
   }
+
   @media (min-width: 1024px)  {
     .srp-Index__body {
       padding: 0 20px 0 32px;
@@ -95,17 +107,4 @@
     }
   }
 
-  .srp-Index__header {
-    position: sticky;
-    top: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    padding: var(--offset-s) 0;
-    background: var(--background);
-  }
-
-  .srp-Index__body {
-    width: 100%;
-  }
 </style>
